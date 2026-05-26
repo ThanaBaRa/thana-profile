@@ -1,14 +1,12 @@
-import { createClient } from '@vercel/redis';
+import { kv } from '@vercel/kv';
 
 export default async function handler(request, response) {
   try {
-    const redis = createClient();
-    
     if (request.method === 'POST') {
-      const newCount = await redis.incr('card_clicks');
+      const newCount = await kv.incr('card_clicks');
       return response.status(200).json({ success: true, count: newCount });
     } else {
-      const currentCount = await redis.get('card_clicks') || 0;
+      const currentCount = (await kv.get('card_clicks')) ?? 0;
       return response.status(200).json({ success: true, count: currentCount });
     }
   } catch (error) {
