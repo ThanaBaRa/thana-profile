@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "@vercel/redis": "^0.1.1"
   }
