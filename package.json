@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "@vercel/kv": "^1.0.1"
+    "@vercel/redis": "^0.1.1"
   }
 }
